@@ -1,11 +1,11 @@
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTTPResponse
 from openai import OpenAI
 
 app = FastAPI()
 
 
-@app.get("/", response_class=HTMLResponse)
+@app.get("/", response_class=HTTPResponse)
 def instant():
     client = OpenAI()
     message = """

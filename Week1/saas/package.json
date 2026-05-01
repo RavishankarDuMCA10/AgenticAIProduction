@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "@clerk/nextjs": "^6.39.0",
+    "@microsoft/fetch-event-source": "^2.0.1",
+    "@tailwindcss/postcss": "^4.2.4",
+    "next": "^15.2.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
+    "remark-breaks": "^4.0.0",
+    "remark-gfm": "^4.0.1",
+    "tailwindcss": "^4.2.4"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "dev:api": "uvicorn api.index:app --reload --port 8000",
+    "build": "next build",
+    "start": "next start"
+  },
+  "devDependencies": {
+    "@types/node": "^20.15.5",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.5.4"
+  }
+}

@@ -179,3 +179,5 @@ finale/.bedrock_agentcore.yaml
 finale/Dockerfile
 finale/.dockerignore
 node_modules
+.next
+out

@@ -7,7 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkBreaks from 'remark-breaks';
 import { fetchEventSource } from '@microsoft/fetch-event-source';
-import { Show, PricingTable, UserButton } from '@clerk/nextjs';
+import { Show, SignInButton, UserButton } from '@clerk/nextjs';
 
 function ConsultationForm() {
     const { getToken } = useAuth();
@@ -147,20 +147,17 @@ export default function Product() {
 
             {/* Subscription Protection */}
             <Show
-                when={{ plan: "premium_subscription" }}
+                when="signed-in"
                 fallback={
-                    <div className="container mx-auto px-4 py-12">
-                        <header className="text-center mb-12">
-                            <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
-                                Healthcare Professional Plan
-                            </h1>
-                            <p className="text-gray-600 dark:text-gray-400 text-lg mb-8">
-                                Streamline your patient consultations with AI-powered summaries
-                            </p>
-                        </header>
-                        <div className="max-w-4xl mx-auto">
-                            <PricingTable />
-                        </div>
+                    <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6">
+                        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">
+                            Sign in to access the Consultation Assistant
+                        </h2>
+                        <SignInButton mode="modal">
+                            <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
+                                Sign In
+                            </button>
+                        </SignInButton>
                     </div>
                 }
             >

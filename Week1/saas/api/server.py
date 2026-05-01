@@ -102,9 +102,20 @@ def health_check():
 # Serve static files (our Next.js export) - MUST BE LAST!
 static_path = Path("static")
 if static_path.exists():
+    app.mount("/_next", StaticFiles(directory=static_path / "_next"), name="next")
 
     @app.get("/")
     async def serve_root():
         return FileResponse(static_path / "index.html")
 
-    app.mount("/", StaticFiles(directory="static", html=True), name="static")
+    @app.get("/{full_path:path}")
+    async def serve_static(full_path: str):
+        requested = static_path / full_path
+        html_file = static_path / f"{full_path}.html"
+
+        if requested.exists() and requested.is_file():
+            return FileResponse(requested)
+        if html_file.exists() and html_file.is_file():
+            return FileResponse(html_file)
+
+        return FileResponse(static_path / "index.html")
